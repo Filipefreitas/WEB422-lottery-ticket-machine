@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'lottery-ticket-machine';
+  @Input() totalBetAmount:number = 0;
+
+  receiveBetAmount(totalAmount:number)
+  {
+    this.totalBetAmount = totalAmount;
+
+    //for testing purposes
+    //console.log(totalAmount);
+  }
 }

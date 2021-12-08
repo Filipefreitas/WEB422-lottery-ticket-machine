@@ -1,0 +1,10 @@
+.selected-numbers-container
+{
+    border: 10px solid #007bc4;
+    width: 90%;
+}
+
+.selected-numbers
+{
+    height: 450px;
+}

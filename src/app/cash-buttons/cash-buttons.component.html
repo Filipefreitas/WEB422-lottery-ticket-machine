@@ -1,0 +1,7 @@
+<div class="grid grid-col-2 bottom cash-container">
+    <button *ngFor="let dollarNote of dollarNotes" (click)="setBetAmount(dollarNote)" class="btn btn-cash center">
+        <p >
+            $ {{dollarNote}}
+        </p>
+    </button>
+</div>

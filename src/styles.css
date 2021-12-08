@@ -1,1 +1,119 @@
-/* You can add global styles to this file, and also import other style files */
+/************* BASIC CONFIG *************/
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* border: 1px solid #f00 !important;  */
+}
+
+body
+{
+    background-color: #f5cf52;
+    line-height: 1.7;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.center
+{
+    margin: 0;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.bottom
+{
+    margin: 0;
+    position: relative;
+    bottom: -75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.allign-center
+{
+    margin: 10px auto;
+    text-align: center;
+}
+
+.right-alligned
+{
+    margin-left: auto; 
+    margin-right: 20%;
+}
+
+.left-alligned
+{
+    margin-left: 5%; 
+    margin-right: auto;
+}
+
+.text-left-alligned
+{
+    text-align: left;
+}
+
+.bold
+{
+    font-weight: bold;
+}
+
+.white
+{
+    color: white;
+}
+
+.hide
+{
+    display: none;
+}
+/************* GRIDS *************/
+.grid
+{
+    display: grid;
+}
+
+.grid-col-2
+{
+    grid-template-columns: 1fr 1fr;
+}
+
+.grid-col-2-2
+{
+    grid-template-columns: 1fr 3fr;
+}
+
+.grid-col-2-3
+{
+    grid-template-columns: 2fr 1fr;
+}
+
+.grid-col-3
+{
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.grid-col-3-2
+{
+    grid-template-columns: 1fr 2fr 1fr;
+}
+
+.grid-col-6
+{
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}   
+
+/************* BUTTONS *************/
+.btn
+{
+    display: inline-block;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+}
+

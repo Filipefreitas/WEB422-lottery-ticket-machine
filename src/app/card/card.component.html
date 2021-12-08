@@ -1,0 +1,59 @@
+<div class= "grid grid-col-2-3">
+    <div class = "card grid grid-col-6">
+        <button *ngFor="let number of numbers" (click)="[selectNumber(number), selected(number)]" [ngClass]="{'selected' : selected(number)===true}"
+                class="box-number">
+            {{number}}
+        </button>
+        <span (click)="openModal('checkout-modal')" class="btn btn-action">CASH</span>
+        <span (click)="clear()" class="btn btn-action">CLEAR</span>    
+    </div>
+
+    <div>
+        <app-selected-numbers [myNumbers]="selectedNumbers" [finalAmount]="finalAmount"></app-selected-numbers>
+    </div>
+</div>
+
+<!--code for modal-->
+<jw-modal id="checkout-modal">
+    <div id="checkout-container" class="grid grid-col-2-3 center">
+        <h2 class="modal-header bold">Cash</h2>
+    
+        <div class="checkout-inner-container grid grid-col-2-2">    
+            <h3 class="modal-title white text-left-alligned">Enter Amount Received</h3>
+            <label class="text-left-alligned white">Total</label>
+            <span class="text-left-alligned white">$ {{finalAmount.toFixed(2)}}</span>
+
+            <label class="text-left-alligned white">Received</label>
+            <span class="calc-totals"></span>
+
+            <label class="text-left-alligned white ">Change</label>
+            <span class="calc-totals"></span>
+
+            <button class="btn btn-modal center bold">Confirm</button>
+            <button (click)="closeModal('checkout-modal')" class="btn btn-modal center bold">Close</button>
+        </div>
+
+        <div class="numpad-container center grid grid-col-3">
+            <button class="checkout-numpad">7</button>
+            <button class="checkout-numpad">8</button>
+            <button class="checkout-numpad">9</button>
+
+            <button class="checkout-numpad">4</button>
+            <button class="checkout-numpad">5</button>
+            <button class="checkout-numpad">6</button>
+
+            <button class="checkout-numpad">1</button>
+            <button class="checkout-numpad">2</button>
+            <button class="checkout-numpad">3</button>
+
+            <button class="checkout-numpad">0</button>
+            <button class="checkout-numpad">.</button>
+            <button id="btn-clear" class="checkout-numpad white">Cl</button>
+        </div>
+    </div>
+</jw-modal>
+
+
+<!--
+    <span [ngClass]="{'hide' : checkCompleted()===false}">You can only clear after selecting five numbers</span>
+-->

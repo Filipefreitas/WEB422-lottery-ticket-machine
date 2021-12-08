@@ -1,0 +1,11 @@
+<div class="selected-numbers-container">
+    <p class="text-left-alligned bold">Numbers Selected</p>
+    <div class="selected-numbers">
+        <div *ngFor="let myNumbers of myNumbers"  class="box-number">
+            <p class="text-left-alligned bold">
+                Mark: {{myNumbers}}
+            </p>
+        </div>
+    </div>
+    <p class="text-left-alligned bold">Total: $ {{finalAmount.toFixed(2)}}</p>
+</div>
