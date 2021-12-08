@@ -14,3 +14,9 @@
     height: 120px;
     font-size: 2rem;
 }
+
+.btn-cash:active
+{
+    background-color: rgba(8, 60, 191, 0.911);
+    color: rgba(25, 25, 25, 0.707);
+}

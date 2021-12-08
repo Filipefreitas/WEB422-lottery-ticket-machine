@@ -1,18 +1,18 @@
 //source: https://jasonwatmore.com/post/2020/09/24/angular-10-custom-modal-window-dialog-box
 import { Component, ViewEncapsulation, ElementRef, Input, OnInit, OnDestroy } from '@angular/core';
-import { CheckoutService } from './checkout.service';
+import { ModalService } from './modal.service';
 
 @Component({ 
     selector: 'jw-modal', 
-    templateUrl: 'checkout.component.html', 
-    styleUrls: ['checkout.component.less'],
+    templateUrl: 'modal.component.html', 
+    styleUrls: ['modal.component.less'],
     encapsulation: ViewEncapsulation.None
 })
-export class CheckoutComponent implements OnInit, OnDestroy {
+export class ModalComponent implements OnInit, OnDestroy {
     @Input() id: string = "";
     private element: any;
 
-    constructor(private checkoutService: CheckoutService, private el: ElementRef) {
+    constructor(private checkoutService: ModalService, private el: ElementRef) {
         this.element = el.nativeElement;
     }
 
@@ -54,4 +54,5 @@ export class CheckoutComponent implements OnInit, OnDestroy {
         this.element.style.display = 'none';
         document.body.classList.remove('jw-modal-open');
     }
+
 }

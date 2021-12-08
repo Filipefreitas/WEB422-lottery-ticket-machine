@@ -57,6 +57,11 @@ body
     text-align: left;
 }
 
+.text-rigth-alligned
+{
+    text-align: right;
+}
+
 .bold
 {
     font-weight: bold;

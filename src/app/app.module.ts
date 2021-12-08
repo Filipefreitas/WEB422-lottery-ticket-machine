@@ -7,7 +7,7 @@ import { CardComponent } from './card/card.component';
 import { CashButtonsComponent } from './cash-buttons/cash-buttons.component';
 import { HeaderComponent } from './header/header.component';
 import { SelectedNumbersComponent } from './selected-numbers/selected-numbers.component';
-import { CheckoutComponent } from './checkout/checkout.component';
+import { ModalComponent } from './modal/modal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -17,7 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CashButtonsComponent,
     HeaderComponent,
     SelectedNumbersComponent,
-    CheckoutComponent
+    ModalComponent
   ],
   imports: [
     BrowserModule,

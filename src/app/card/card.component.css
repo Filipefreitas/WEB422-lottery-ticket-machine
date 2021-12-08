@@ -50,7 +50,7 @@
     text-align: left;
 }
 
-.modal-header, h2
+.modal-header
 {
     padding-left: 10px;
 }
@@ -117,6 +117,13 @@
     cursor: pointer;
 }
 
+.checkout-numpad:active
+{
+    background-color: rgb(189, 189, 189);
+    transform: translateY(4px);
+    color: rgba(25, 25, 25, 0.707);
+}
+
 .calc-totals
 {
     background-color: #295e94;
@@ -129,3 +136,30 @@
     background-color: #f2a3a9;
     color: white;
 }
+
+#receipt-modal-container
+{
+    background-color: #ebebd3;
+    max-width: 25%;
+    height: 450px;
+    position: relative;
+    margin: 10px auto;
+}
+
+#receipt-modal-container > *
+{
+    padding-left: 10px;
+}
+
+.receipt-footer
+{
+    position: absolute;
+    bottom: 0px;
+}
+
+.selected-numbers
+{
+    width:500px;
+    float:left;
+}
+

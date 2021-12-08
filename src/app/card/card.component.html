@@ -1,10 +1,10 @@
 <div class= "grid grid-col-2-3">
     <div class = "card grid grid-col-6">
-        <button *ngFor="let number of numbers" (click)="[selectNumber(number), selected(number)]" [ngClass]="{'selected' : selected(number)===true}"
+        <button *ngFor="let number of numbers" (click)="[selectNumber(number), selected(number), checkFull()]" [ngClass]="{'selected' : selected(number)===true}"
                 class="box-number">
             {{number}}
         </button>
-        <span (click)="openModal('checkout-modal')" class="btn btn-action">CASH</span>
+        <span (click)="goToCheckout()" class="btn btn-action">CASH</span>
         <span (click)="clear()" class="btn btn-action">CLEAR</span>    
     </div>
 
@@ -13,7 +13,7 @@
     </div>
 </div>
 
-<!--code for modal-->
+<!--code for checkout modal-->
 <jw-modal id="checkout-modal">
     <div id="checkout-container" class="grid grid-col-2-3 center">
         <h2 class="modal-header bold">Cash</h2>
@@ -24,36 +24,42 @@
             <span class="text-left-alligned white">$ {{finalAmount.toFixed(2)}}</span>
 
             <label class="text-left-alligned white">Received</label>
-            <span class="calc-totals"></span>
+            <span class="white calc-totals">$ {{amountReceived.toFixed(2)}}</span>
 
-            <label class="text-left-alligned white ">Change</label>
-            <span class="calc-totals"></span>
+            <label class="text-left-alligned white">Change</label>
+            <span class="white calc-totals">$ {{change.toFixed(2)}}</span>
 
-            <button class="btn btn-modal center bold">Confirm</button>
+            <button (click)="generateTicket()" class="btn btn-modal center bold">Confirm</button>
             <button (click)="closeModal('checkout-modal')" class="btn btn-modal center bold">Close</button>
         </div>
 
         <div class="numpad-container center grid grid-col-3">
-            <button class="checkout-numpad">7</button>
-            <button class="checkout-numpad">8</button>
-            <button class="checkout-numpad">9</button>
-
-            <button class="checkout-numpad">4</button>
-            <button class="checkout-numpad">5</button>
-            <button class="checkout-numpad">6</button>
-
-            <button class="checkout-numpad">1</button>
-            <button class="checkout-numpad">2</button>
-            <button class="checkout-numpad">3</button>
-
-            <button class="checkout-numpad">0</button>
-            <button class="checkout-numpad">.</button>
-            <button id="btn-clear" class="checkout-numpad white">Cl</button>
+            <button *ngFor="let padNumber of padNumbers" (click)="received(padNumber)" class="checkout-numpad">{{padNumber}}</button>
+            <button id="btn-clear" (click)="clearReceivedAmount()" class="checkout-numpad white">Cl</button>
         </div>
     </div>
 </jw-modal>
 
-
-<!--
-    <span [ngClass]="{'hide' : checkCompleted()===false}">You can only clear after selecting five numbers</span>
--->
+<!--code for ticket modal-->
+<jw-modal id="receipt-modal">
+    <div id="receipt-modal-container">
+        <h2 class="text-left-alligned">Your lucky ticket summary:</h2>
+        <p class="text-left-alligned">-----------------------------------------------------</p>
+        <h4 class="text-left-alligned">Your selected numbers: </h4>
+        <p class="text-left-alligned">-----------------------------------------------------</p>
+        <div class="selected-numbers text-left-alligned">
+            <span *ngFor="let selectedNumber of selectedNumbers; let lastcall=last">
+                {{selectedNumber}} 
+                <span *ngIf="!lastcall">,</span>
+            </span>
+        </div>
+        <p class="text-left-alligned">-----------------------------------------------------</p>
+        <h4 class="text-left-alligned">Transaction summary: </h4>
+        <p class="text-left-alligned">-----------------------------------------------------</p>
+        <p class="text-left-alligned">Amount bet: $ {{finalAmount.toFixed(2)}}</p>
+        <p class="text-left-alligned">Your payment: $ {{amountReceived.toFixed(2)}}</p>
+        <p class="text-left-alligned">Your change: $ {{change.toFixed(2)}}</p>
+        <p class="text-left-alligned">-----------------------------------------------------</p>
+        <p class="text-left-alligned receipt-footer bold">-------------------- WEB 422 -------------------</p>
+    </div>
+</jw-modal>
