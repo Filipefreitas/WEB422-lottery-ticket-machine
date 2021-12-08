@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ModalService } from '../modal/modal.service'
 
 @Component({
@@ -30,10 +30,10 @@ export class CardComponent implements OnInit {
   isFull:boolean = false;
   selectedNumbers: number[] = [];
   @Input() finalAmount:number = 0;
+
   selectedAmount:string = "";
   amountReceived:number = 0;
   change:number = 0;
-  acceptFloatingPoint:boolean = true;
 
   selectNumber(clickedNum:number)
   {
@@ -76,7 +76,6 @@ export class CardComponent implements OnInit {
     {
       this.selectedNumbers = [];
       this.isFull = false;
-      this.acceptFloatingPoint = true;
       this.finalAmount = 0;
       this.amountReceived = 0;
       this.change = 0;
@@ -91,15 +90,7 @@ export class CardComponent implements OnInit {
   {
     this.selectedAmount = this.selectedAmount + amtReceived;
 
-    if(this.acceptFloatingPoint && amtReceived === "." )
-    {
-      this.acceptFloatingPoint = false;
-    }
-    else if(amtReceived === ".")
-    {
-      window.alert(`Floating point has already been added`);
-    }
-    else
+    if(amtReceived !== "." )
     {
       this.amountReceived = parseFloat(this.selectedAmount);
       if(this.amountReceived > this.finalAmount)
