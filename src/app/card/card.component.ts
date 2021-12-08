@@ -28,8 +28,11 @@ export class CardComponent implements OnInit {
   padNumbers:string[] = ['7', '8', '9', '4', '5', '6', '1', '2', '3', '0', '.'];
   isSelected:boolean = false;
   isFull:boolean = false;
+  isError:boolean = false;
   selectedNumbers: number[] = [];
   @Input() finalAmount:number = 0;
+  errorMessage:string = "";
+  modalErrorMessage:string="";
 
   selectedAmount:string = "";
   amountReceived:number = 0;
@@ -49,7 +52,7 @@ export class CardComponent implements OnInit {
     }
     else if(this.isFull)
     {
-      window.alert(`Maximun numbers already selected`);
+      this.errorMessage = "Maximun numbers already selected";
     }
     else
     {
@@ -79,10 +82,12 @@ export class CardComponent implements OnInit {
       this.finalAmount = 0;
       this.amountReceived = 0;
       this.change = 0;
+      this.errorMessage = "";
     }
     else
     {
-      window.alert(`You can only clear after selecting all numbers`);
+      this.errorMessage = "Function disabled. You must select five numbers before cleaning them out";
+      this.isError = true;
     }
   }
 
@@ -116,21 +121,26 @@ export class CardComponent implements OnInit {
     return this.isFull;
   }
 
-  goToCheckout()
+  goToCheckout():boolean
   {
     {
       if(!this.isFull)
       {
-        window.alert(`You must select five numbers before proceeding to checkout`);
+        this.errorMessage = "Function disabled. You must select five numbers before proceeding to checkout";
+        this.isError = true;
       }
       else if(this.finalAmount === 0)
       {
-        window.alert(`You must select a betting amount before procceding to checkout`);
+        this.errorMessage = "Function disabled. You must select a betting amount before procceding to checkout";
+        this.isError = true;
       }
       else
       {
+        this.isError = false;
+        this.errorMessage = "";
         this.openModal('checkout-modal');
       }
+      return this.isError
     }
   }
   
@@ -138,7 +148,8 @@ export class CardComponent implements OnInit {
   {
     if(this.amountReceived < this.finalAmount)
     {
-      window.alert(`Payment has not been completed yet`);
+      this.isError = true;
+      this.modalErrorMessage = "Payment has not been completed yet";
     }
     else
     {
@@ -147,5 +158,4 @@ export class CardComponent implements OnInit {
       this.openModal('receipt-modal');
     }
   }
-
 }

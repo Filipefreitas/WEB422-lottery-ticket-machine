@@ -4,14 +4,19 @@
                 class="box-number">
             {{number}}
         </button>
-        <span (click)="goToCheckout()" class="btn btn-action">CASH</span>
-        <span (click)="clear()" class="btn btn-action">CLEAR</span>    
+        <span (click)="[goToCheckout()]" class="btn btn-action">CASH</span>
+        <span (click)="[clear()]" class="btn btn-action">CLEAR</span>    
     </div>
 
     <div>
         <app-selected-numbers [myNumbers]="selectedNumbers" [finalAmount]="finalAmount"></app-selected-numbers>
     </div>
+    
+    <span class="hide" [ngClass]="{'display error bold' : isError===true}">
+        {{errorMessage}}
+    </span>
 </div>
+
 
 <!--code for checkout modal-->
 <jw-modal id="checkout-modal">
@@ -37,7 +42,12 @@
             <button *ngFor="let padNumber of padNumbers" (click)="received(padNumber)" class="checkout-numpad">{{padNumber}}</button>
             <button id="btn-clear" (click)="clearReceivedAmount()" class="checkout-numpad white">Cl</button>
         </div>
+
+        <span class="hide" [ngClass]="{'display error span-2 bold center' : isError===true}">
+            {{modalErrorMessage}}
+        </span>
     </div>
+
 </jw-modal>
 
 <!--code for ticket modal-->
