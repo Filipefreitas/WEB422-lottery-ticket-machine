@@ -114,10 +114,12 @@ export class CardComponent implements OnInit {
 
   checkFull():boolean
   {
+    this.isFull = false;
     if(this.selectedNumbers.length === 5)
     {
       this.isFull = true;
     }
+    console.log(this.isFull);
     return this.isFull;
   }
 
