@@ -40,6 +40,7 @@ export class CardComponent implements OnInit {
 
   selectNumber(clickedNum:number)
   {
+    this.isError = false;
     if(this.selectedNumbers.includes(clickedNum))
     {
       for(let i = 0; i < this.selectedNumbers.length; i++)
@@ -52,6 +53,7 @@ export class CardComponent implements OnInit {
     }
     else if(this.isFull)
     {
+      this.isError = true;
       this.errorMessage = "Maximun numbers already selected";
     }
     else
@@ -86,8 +88,8 @@ export class CardComponent implements OnInit {
     }
     else
     {
-      this.errorMessage = "Function disabled. You must select five numbers before cleaning them out";
       this.isError = true;
+      this.errorMessage = "Function disabled. You must select five numbers before cleaning them out";
     }
   }
 
@@ -119,31 +121,28 @@ export class CardComponent implements OnInit {
     {
       this.isFull = true;
     }
-    console.log(this.isFull);
     return this.isFull;
   }
 
   goToCheckout():boolean
   {
+    if(!this.isFull)
     {
-      if(!this.isFull)
-      {
-        this.errorMessage = "Function disabled. You must select five numbers before proceeding to checkout";
-        this.isError = true;
-      }
-      else if(this.finalAmount === 0)
-      {
-        this.errorMessage = "Function disabled. You must select a betting amount before procceding to checkout";
-        this.isError = true;
-      }
-      else
-      {
-        this.isError = false;
-        this.errorMessage = "";
-        this.openModal('checkout-modal');
-      }
-      return this.isError
+      this.isError = true;
+      this.errorMessage = "Function disabled. You must select five numbers before proceeding to checkout";
     }
+    else if(this.finalAmount === 0)
+    {
+      this.isError = true;
+      this.errorMessage = "Function disabled. You must select a betting amount before procceding to checkout";
+    }
+    else
+    {
+      this.isError = false;
+      this.errorMessage = "";
+      this.openModal('checkout-modal');
+    }
+    return this.isError
   }
   
   generateTicket()
