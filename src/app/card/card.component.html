@@ -54,22 +54,22 @@
 <jw-modal id="receipt-modal">
     <div id="receipt-modal-container">
         <h2 class="text-left-alligned">Your lucky ticket summary:</h2>
-        <p class="text-left-alligned">-----------------------------------------------------</p>
+        <p class="text-left-alligned">-------------------------------------------------</p>
         <h4 class="text-left-alligned">Your selected numbers: </h4>
-        <p class="text-left-alligned">-----------------------------------------------------</p>
+        <p class="text-left-alligned">-------------------------------------------------</p>
         <div class="selected-numbers text-left-alligned">
             <span *ngFor="let selectedNumber of selectedNumbers; let lastcall=last">
                 {{selectedNumber}} 
                 <span *ngIf="!lastcall">,</span>
             </span>
         </div>
-        <p class="text-left-alligned">-----------------------------------------------------</p>
+        <p class="text-left-alligned">-------------------------------------------------</p>
         <h4 class="text-left-alligned">Transaction summary: </h4>
-        <p class="text-left-alligned">-----------------------------------------------------</p>
+        <p class="text-left-alligned">-------------------------------------------------</p>
         <p class="text-left-alligned">Amount bet: $ {{finalAmount.toFixed(2)}}</p>
         <p class="text-left-alligned">Your payment: $ {{amountReceived.toFixed(2)}}</p>
         <p class="text-left-alligned">Your change: $ {{change.toFixed(2)}}</p>
-        <p class="text-left-alligned">-----------------------------------------------------</p>
-        <p class="text-left-alligned receipt-footer bold">-------------------- WEB 422 -------------------</p>
+        <p class="text-left-alligned">-------------------------------------------------</p>
+        <p class="text-left-alligned receipt-footer bold">------------------ WEB 422 -----------------</p>
     </div>
 </jw-modal>
